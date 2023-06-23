@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/outputStreamWriter" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fileList"
+        android:id="@+id/recycle_view_fileList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
@@ -49,4 +49,39 @@
         app:layout_constraintTop_toBottomOf="@id/viewFilelist"
         tools:listitem="@android:layout/simple_list_item_1" />
 
+
+    <Button
+        android:id="@+id/readAllFileNames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/read_all_files"
+        app:layout_constraintBaseline_toBaselineOf="@+id/writeToFile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/writeToFile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/linearLayoutShowFileContent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewFilelist"
+        app:layout_goneMarginBottom="32dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewShowFileContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </ScrollView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,5 @@
     <string name="write_to_file">Write to File</string>
     <string name="write_via_outputstreamwriter">Write via OutputStreamWriter</string>
     <string name="view_all_files">View All Files</string>
+    <string name="read_all_files">Read All Files</string>
 </resources>
