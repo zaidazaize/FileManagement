@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAllFileContent() {
        changeVisibility(LAYOUT_STATE_TWO)
+       writeAllFileContentToTextView()
+    }
+
+    //writes all files content to text view
+    private fun writeAllFileContentToTextView(){
         lifecycleScope.launch {
             val files = fileList()
             val text = StringBuilder()
@@ -107,6 +112,7 @@ class MainActivity : AppCompatActivity() {
                 var text = "Hello World ${i}"
                 file.writeText("Hello World")
             }
+            writeAllFileContentToTextView()
         }
     }
 
@@ -121,6 +127,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+            writeAllFileContentToTextView()
         }
     }
 }
