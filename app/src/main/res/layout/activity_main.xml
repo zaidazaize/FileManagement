@@ -84,4 +84,13 @@
 
         </ScrollView>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_directorys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_directory_s"
+        app:layout_constraintBaseline_toBaselineOf="@+id/writeToFile"
+        app:layout_constraintEnd_toStartOf="@+id/writeToFile"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

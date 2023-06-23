@@ -1,10 +1,14 @@
 package com.example.filemanagement
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filemanagement.databinding.ActivityMainBinding
@@ -15,7 +19,7 @@ import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val LAYOUT_STATE_ONE = 0
         const val LAYOUT_STATE_TWO = 1
     }
@@ -51,12 +55,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAllFileContent() {
-       changeVisibility(LAYOUT_STATE_TWO)
-       writeAllFileContentToTextView()
+        changeVisibility(LAYOUT_STATE_TWO)
+        writeAllFileContentToTextView()
     }
 
     //writes all files content to text view
-    private fun writeAllFileContentToTextView(){
+    private fun writeAllFileContentToTextView() {
         lifecycleScope.launch {
             val files = fileList()
             val text = StringBuilder()
@@ -72,8 +76,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     //change visibility of recycler view and text view
-    private fun changeVisibility(int : Int) {
-        if(int == 0) {
+    private fun changeVisibility(int: Int) {
+        if (int == 0) {
             binding.recycleViewFileList.visibility = View.VISIBLE
             binding.linearLayoutShowFileContent.visibility = View.GONE
         } else {
@@ -84,14 +88,14 @@ class MainActivity : AppCompatActivity() {
 
     //read all files
     private fun readAllFiles() {
-       changeVisibility(LAYOUT_STATE_TWO)
-       lifecycleScope.launch {
-           var files = fileList()
-           for (file in files) {
-               var text = File(filesDir, file).readText()
-               Log.d("TAG", "readAllFiles: $text")
-           }
-       }
+        changeVisibility(LAYOUT_STATE_TWO)
+        lifecycleScope.launch {
+            var files = fileList()
+            for (file in files) {
+                var text = File(filesDir, file).readText()
+                Log.d("TAG", "readAllFiles: $text")
+            }
+        }
     }
 
     //show file list
