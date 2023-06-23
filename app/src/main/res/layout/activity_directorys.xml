@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".Directorys">
 
+    <Button
+        android:id="@+id/button_files_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/files_directory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_show_files_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_ext_files_dir" />
+
+    <Button
+        android:id="@+id/button_int_cache_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/int_cache_dir"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_files_dir"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+
+        android:id="@+id/button_ext_files_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Ext Files Dir"
+        app:layout_constraintStart_toStartOf="@+id/button_files_dir"
+        app:layout_constraintTop_toBottomOf="@+id/button_files_dir" />
+
+    <Button
+        android:id="@+id/button_ext_cache_dir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ext Cache Dir"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_ext_files_dir"
+        app:layout_constraintStart_toStartOf="@+id/button_int_cache_dir" />
 </androidx.constraintlayout.widget.ConstraintLayout>

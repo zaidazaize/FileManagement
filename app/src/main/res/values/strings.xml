@@ -5,4 +5,6 @@
     <string name="view_all_files">View All Files</string>
     <string name="read_all_files">Read All Files</string>
     <string name="view_directory_s">View Directory\'s</string>
+    <string name="files_directory">Files Dir.</string>
+    <string name="int_cache_dir">Int. Cache Dir.</string>
 </resources>

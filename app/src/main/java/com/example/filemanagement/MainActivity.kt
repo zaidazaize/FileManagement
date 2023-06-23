@@ -52,52 +52,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent);
         }
 
-        Log.d("main class activity", "MainActivity class.java ${MainActivity::class.java}")
-        Log.d("main class activity", "simpleName ${MainActivity::class.simpleName}")
-        Log.d("main class activity", "qualifiedName ${MainActivity::class.qualifiedName}")
-        Log.d("main class activity", "super types ${MainActivity::class.supertypes.joinToString("/n")}")
-        MainActivity::class.java.annotations.apply {
-            Log.d("main class activity size", "annotations ${this.size}")
-            forEach {
-                Log.d("main class activity", "annotation $it")
-            }
-        }
-        MainActivity::class.java.declaredAnnotations.apply {
-            Log.d("main class activity size ", "declaredAnnotations ${this.size}")
-            forEach {
-                Log.d("main class activity", "declaredAnnotation ${it}")
-            }
-        }
-        MainActivity::class.java.declaredFields.apply {
-            Log.d("main class activity size", "declaredFields ${this.size}")
-            forEach {
-                Log.d("main class activity", "declaredField ${it}")
-            }
-        }
-        MainActivity::class.java.declaredMethods.apply {
-            Log.d("main class activity size", "declaredMethods ${this.size}")
-            forEach {
-                Log.d("main class activity", "declaredMethod ${it}")
-            }
-        }
-        MainActivity::class.java.declaredClasses.apply {
-            Log.d("main class activity size", "declaredClasses ${this.size}")
-            forEach {
-                Log.d("main class activity", "declaredClass ${it}")
-            }
-        }
-        MainActivity::class.java.classes.apply {
-            Log.d("main class activity size", "classes ${this.size}")
-            forEach {
-                Log.d("main class activity", "class ${it}")
-            }
-        }
-        Log.d("file directory", "internal: ${filesDir} ")
-        Log.d("file directory", "external: ${getExternalFilesDir(null)?.absolutePath} ")
-        val external = ContextCompat.getExternalFilesDirs(applicationContext, null)
-        Log.d("file directory", "onCreate: ${external.size}")
-        Log.d("file directory", "external: ${Environment.getExternalStorageDirectory()} ")
-        Log.d("file directory", "external: ${getExternalFilesDir(Environment.DIRECTORY_PICTURES)} ")
 
         adapter = Adapter()
         binding.recycleViewFileList.adapter = adapter
