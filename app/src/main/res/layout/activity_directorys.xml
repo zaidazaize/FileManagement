@@ -23,7 +23,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_ext_files_dir" />
+        app:layout_constraintTop_toBottomOf="@+id/button_ext_files_dir"
+        tools:text="Files Dir" />
 
     <Button
         android:id="@+id/button_int_cache_dir"
@@ -51,4 +52,30 @@
         android:text="Ext Cache Dir"
         app:layout_constraintBaseline_toBaselineOf="@+id/button_ext_files_dir"
         app:layout_constraintStart_toStartOf="@+id/button_int_cache_dir" />
+
+    <Button
+        android:id="@+id/button_empty_space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/empty_space"
+        app:layout_constraintStart_toStartOf="@+id/button_ext_files_dir"
+        app:layout_constraintTop_toBottomOf="@+id/button_ext_files_dir" />
+
+    <Button
+        android:id="@+id/button_manage_storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/manage_storage"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_empty_space"
+        app:layout_constraintStart_toStartOf="@+id/button_ext_cache_dir" />
+
+    <Button
+        android:id="@+id/button_clear_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/clear_cache"
+        app:layout_constraintStart_toStartOf="@+id/button_empty_space"
+        app:layout_constraintTop_toBottomOf="@+id/button_empty_space" />
 </androidx.constraintlayout.widget.ConstraintLayout>

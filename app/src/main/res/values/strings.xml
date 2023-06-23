@@ -7,4 +7,7 @@
     <string name="view_directory_s">View Directory\'s</string>
     <string name="files_directory">Files Dir.</string>
     <string name="int_cache_dir">Int. Cache Dir.</string>
+    <string name="manage_storage">Manage storage</string>
+    <string name="empty_space">Empty Space</string>
+    <string name="clear_cache">Clear Cache</string>
 </resources>
