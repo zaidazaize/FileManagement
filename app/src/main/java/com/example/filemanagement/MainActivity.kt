@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filemanagement.databinding.ActivityMainBinding
+import com.example.filemanagement.mediafiesviewer.MediaAcitivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newFixedThreadPoolContext
@@ -51,8 +52,11 @@ class MainActivity : AppCompatActivity() {
             val intent: Intent = Intent(this, Directorys::class.java);
             startActivity(intent);
         }
-
-
+        //add intent to media activity
+        binding.buttonShowMediaFiles.setOnClickListener() {
+            val intent: Intent = Intent(this, MediaAcitivity::class.java);
+            startActivity(intent);
+        }
         adapter = Adapter()
         binding.recycleViewFileList.adapter = adapter
         binding.recycleViewFileList.layoutManager = LinearLayoutManager(binding.root.context)
