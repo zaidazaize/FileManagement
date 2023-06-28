@@ -4,7 +4,7 @@ This Android app allows users to explore the internal and external storage 📁 
 
 ## Features 🚀
 
-- View all internal and external storage directories 📁📂
+- View all internal files 📁📂
 - Create files and write ✏️ content into them using different methods
 - Display the names of all files 📃 in the app's internal directory
 - Read and display the contents of all files in a single text view 📄👀
