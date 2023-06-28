@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.DiffUtil
 
 data class MediaImage(
     val id: Long,
-    val Uri: Uri,
+    val uri: Uri,
     val name: String,
     val size: String){
 

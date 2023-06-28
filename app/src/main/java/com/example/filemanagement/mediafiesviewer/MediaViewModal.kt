@@ -7,6 +7,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import com.example.filemanagement.mediafiesviewer.models.MediaImage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MediaViewModal(
     private val repository: MediaRepository,
@@ -33,6 +38,20 @@ class MediaViewModal(
     fun setState(state: Int) {
         _state.value = state
     }
+
+    fun getImages(): LiveData<List<MediaImage>> {
+        viewModelScope.launch {
+            getImagesFromRepository()
+        }
+        return repository.images
+    }
+
+    suspend fun getImagesFromRepository(){
+        withContext(Dispatchers.IO){
+            repository.loadImages()
+        }
+    }
+
 
 
 

@@ -14,14 +14,16 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filemanagement.R
 import com.example.filemanagement.databinding.ActivityMediaAcitivityBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MediaAcitivity : AppCompatActivity(), OnClickListener {
+
     private lateinit var binding: ActivityMediaAcitivityBinding
     private lateinit var mediaViewModal: MediaViewModal
-
+    private lateinit var mediaAdapter: MediaAdapter
     private val permissionStatus = MutableLiveData(false)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +35,24 @@ class MediaAcitivity : AppCompatActivity(), OnClickListener {
             MediaViewModal.getFactory(application)
         )[MediaViewModal::class.java]
 
+        // handle recycle view
+        mediaAdapter = MediaAdapter()
+        binding.recyclerViewShowMedia.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewShowMedia.adapter = mediaAdapter
+
         //observe state changes and update recycle view
         mediaViewModal.state.observe(this@MediaAcitivity) {
             updateRecycleView(it)
         }
+
         setContentView(binding.root)
 
         //check if all permissions are granted
         if (!allPermissionsGranted()) {
             requestPermission()
+        }
+        mediaViewModal.getImages().observe(this@MediaAcitivity) {
+            mediaAdapter.submitList(it)
         }
 
 //        observe permission status and request permission if not granted
@@ -57,10 +68,18 @@ class MediaAcitivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun updateRecycleView(it: Int) {
-        if (it == STATE_NONE) {
-            Toast.makeText(this, "No Files Selected", Toast.LENGTH_SHORT).show()
-            return
-        }
+
+//        when(it){
+//            STATE_IMAGE -> {
+//                mediaAdapter.submitList()
+//            }
+//            STATE_VIDEO -> {
+//                mediaAdapter.submitList(mediaViewModal.videos)
+//            }
+//            else -> {
+//                mediaAdapter.submitList(null)
+//            }
+//        }
 
     }
 
