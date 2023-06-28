@@ -1,21 +1,15 @@
 package com.example.filemanagement
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filemanagement.databinding.ActivityMainBinding
-import com.example.filemanagement.mediafiesviewer.MediaAcitivity
-import com.google.android.material.snackbar.Snackbar
+import com.example.filemanagement.mediafiesviewer.MediaActivity
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.newFixedThreadPoolContext
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -54,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
         //add intent to media activity
         binding.buttonShowMediaFiles.setOnClickListener() {
-            val intent: Intent = Intent(this, MediaAcitivity::class.java);
+            val intent: Intent = Intent(this, MediaActivity::class.java);
             startActivity(intent);
         }
         adapter = Adapter()

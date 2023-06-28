@@ -1,29 +1,43 @@
 package com.example.filemanagement.mediafiesviewer
 
-import android.provider.MediaStore.Audio.Media
+import android.content.ContentResolver.MimeTypeInfo
+import android.provider.MediaStore
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.filemanagement.databinding.ListItemBinding
+import com.bumptech.glide.Glide
 import com.example.filemanagement.databinding.ListItemMediaBinding
+import com.example.filemanagement.mediafiesviewer.models.MediaFiles
 import com.example.filemanagement.mediafiesviewer.models.MediaImage
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 class MediaAdapter :
-    ListAdapter<MediaImage, MediaAdapter.MediaViewHolder>(MediaImage.DiffCallback) {
+    ListAdapter<MediaFiles, MediaAdapter.MediaViewHolder>(MediaFiles.DiffCallback) {
+    companion object{
+          const val MB = 1024 * 1024
+      }
     inner class MediaViewHolder(private val listItemBinding: ListItemMediaBinding) : RecyclerView.ViewHolder(listItemBinding.root) {
-        fun bind(mediaImage: MediaImage) {
+
+        fun bind(mediaFiles: MediaFiles) {
             listItemBinding.apply {
-                nameTextView.text = mediaImage.name
-                sizeTextView.text = mediaImage.size.toString()
-                imageViewShowImage.setImageURI(mediaImage.uri)
+                if(mediaFiles.MimeType == "image/jpeg")
+                    chipVideoIndicator.visibility = ViewGroup.GONE
+                else
+                    chipVideoIndicator.visibility = ViewGroup.VISIBLE
+                nameTextView.text = mediaFiles.name
+                sizeTextView.text = "Size: ${mediaFiles.size / 1024} KB"
+
+                // load image and video thumbnails
+                Glide.with(imageViewShowThumbnail)
+                    .load(mediaFiles.uri)
+                    .centerCrop()
+                    .into(imageViewShowThumbnail)
             }
         }
     }
 
-    public val state: Int = MediaAcitivity.STATE_NONE
+    public val state: Int = MediaActivity.STATE_NONE
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MediaViewHolder {
         val binding = ListItemMediaBinding.inflate(LayoutInflater.from(parent.context))
         return MediaViewHolder(binding)

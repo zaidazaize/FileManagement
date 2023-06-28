@@ -1,59 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:paddingBottom="4dp">
 
-    <ImageView
-        android:id="@+id/imageView_show_image"
+
+    <com.google.android.material.imageview.ShapeableImageView
+        app:shapeAppearanceOverlay="@style/circular"
+        android:id="@+id/imageView_show_thumbnail"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
+        android:contentDescription="@string/shows_thumbnails_of_the_media_files"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/round_insert_photo_24" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chip"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/imageView_show_image"
-        android:layout_alignEnd="@id/imageView_show_image"
+    <Button
+        android:id="@+id/chip_video_indicator"
+        android:layout_width="16dp"
+        android:layout_height="8dp"
+        android:layout_alignTop="@id/imageView_show_thumbnail"
+        android:layout_alignEnd="@id/imageView_show_thumbnail"
         app:checkedIcon="@drawable/baseline_play_arrow_24"
         app:checkedIconEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_show_image"
-        app:layout_constraintTop_toTopOf="@+id/imageView_show_image" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView_show_thumbnail"
+        app:layout_constraintTop_toTopOf="@+id/imageView_show_thumbnail" />
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="72dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_show_image"
-        app:layout_constraintStart_toStartOf="@+id/imageView_show_image"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_show_image">
+        app:layout_constraintStart_toStartOf="@+id/imageView_show_thumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_show_thumbnail">
 
         <TextView
             android:id="@+id/nameTextView"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textSize="8sp"
             tools:text="Name" />
 
         <TextView
             android:id="@+id/sizeTextView"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp" />
+            android:textSize="8sp" />
     </LinearLayout>
 
 

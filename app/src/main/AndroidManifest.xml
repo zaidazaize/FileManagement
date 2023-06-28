@@ -24,7 +24,7 @@
         android:theme="@style/Theme.FileManagement"
         tools:targetApi="31">
         <activity
-            android:name=".mediafiesviewer.MediaAcitivity"
+            android:name=".mediafiesviewer.MediaActivity"
             android:exported="false" />
         <activity
             android:name=".Directorys"

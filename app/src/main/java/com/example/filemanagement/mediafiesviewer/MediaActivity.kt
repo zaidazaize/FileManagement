@@ -7,19 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filemanagement.R
 import com.example.filemanagement.databinding.ActivityMediaAcitivityBinding
 import com.google.android.material.snackbar.Snackbar
 
-class MediaAcitivity : AppCompatActivity(), OnClickListener {
+class MediaActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var binding: ActivityMediaAcitivityBinding
     private lateinit var mediaViewModal: MediaViewModal
@@ -35,13 +33,18 @@ class MediaAcitivity : AppCompatActivity(), OnClickListener {
             MediaViewModal.getFactory(application)
         )[MediaViewModal::class.java]
 
+        //TODO : Use paging  library to load data instead of loading all data at once
+        //TODO : Use data binding to bind data to views
+
         // handle recycle view
-        mediaAdapter = MediaAdapter()
-        binding.recyclerViewShowMedia.layoutManager = LinearLayoutManager(this)
-        binding.recyclerViewShowMedia.adapter = mediaAdapter
+        binding.recyclerViewShowMedia.apply {
+            mediaAdapter = MediaAdapter()
+            layoutManager = GridLayoutManager(this@MediaActivity, 4)
+            adapter = mediaAdapter
+        }
 
         //observe state changes and update recycle view
-        mediaViewModal.state.observe(this@MediaAcitivity) {
+        mediaViewModal.state.observe(this@MediaActivity) {
             updateRecycleView(it)
         }
 
@@ -51,7 +54,7 @@ class MediaAcitivity : AppCompatActivity(), OnClickListener {
         if (!allPermissionsGranted()) {
             requestPermission()
         }
-        mediaViewModal.getImages().observe(this@MediaAcitivity) {
+        mediaViewModal.getMedia().observe(this@MediaActivity) {
             mediaAdapter.submitList(it)
         }
 

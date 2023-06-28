@@ -12,4 +12,5 @@
     <string name="clear_cache">Clear Cache</string>
     <string name="show_media_files">Media Files</string>
     <string name="show_images">Show Images</string>
+    <string name="shows_thumbnails_of_the_media_files">Shows Thumbnails of the Media files</string>
 </resources>
